@@ -30,7 +30,7 @@ use Botble\RealEstate\Models\Currency;
 use Botble\RealEstate\Models\CustomField;
 use Botble\RealEstate\Models\Facility;
 use Botble\RealEstate\Models\Feature;
-use Botble\RealEstate\Models\Project;
+// use Botble\RealEstate\Models\Project;
 use Botble\RealEstate\Models\Property;
 use stdClass;
 
@@ -47,12 +47,12 @@ class PropertyForm extends FormAbstract
                 'vendor/core/plugins/real-estate/js/components.js',
             ]);
 
-        $projects = Project::query()
-            ->select('name', 'id')
-            ->latest()
-            ->get()
-            ->mapWithKeys(fn (Project $item) => [$item->getKey() => $item->name])
-            ->all();
+        // $projects = Project::query()
+        //     ->select('name', 'id')
+        //     ->latest()
+        //     ->get()
+        //     ->mapWithKeys(fn (Project $item) => [$item->getKey() => $item->name])
+        //     ->all();
 
         $currencies = Currency::query()->pluck('title', 'id')->all();
 
@@ -158,50 +158,50 @@ class PropertyForm extends FormAbstract
                 TextField::class,
                 TextFieldOption::make()
                     ->label(trans('plugins/real-estate::property.form.location'))
-                    ->placeholder(('plugins/real-estate::property.form.location'))
+                    ->placeholder(('Address of property'))
                     ->maxLength(191)
             )
             ->add('rowOpen', 'html', [
                 'html' => '<div class="row">',
             ])
-            ->add('latitude', 'text', [
-                'label' => trans('plugins/real-estate::property.form.latitude'),
-                'wrapper' => [
-                    'class' => 'form-group mb-3 col-md-6',
-                ],
-                'attr' => [
-                    'placeholder' => 'Ex: 1.462260',
-                    'data-counter' => 25,
-                ],
-                'help_block' => [
-                    'tag' => 'a',
-                    'text' => trans('plugins/real-estate::property.form.latitude_helper'),
-                    'attr' => [
-                        'href' => 'https://www.latlong.net/convert-address-to-lat-long.html',
-                        'target' => '_blank',
-                        'rel' => 'nofollow',
-                    ],
-                ],
-            ])
-            ->add('longitude', 'text', [
-                'label' => trans('plugins/real-estate::property.form.longitude'),
-                'wrapper' => [
-                    'class' => 'form-group mb-3 col-md-6',
-                ],
-                'attr' => [
-                    'placeholder' => 'Ex: 103.812530',
-                    'data-counter' => 25,
-                ],
-                'help_block' => [
-                    'tag' => 'a',
-                    'text' => trans('plugins/real-estate::property.form.longitude_helper'),
-                    'attr' => [
-                        'href' => 'https://www.latlong.net/convert-address-to-lat-long.html',
-                        'target' => '_blank',
-                        'rel' => 'nofollow',
-                    ],
-                ],
-            ])
+            // ->add('latitude', 'text', [
+            //     'label' => trans('plugins/real-estate::property.form.latitude'),
+            //     'wrapper' => [
+            //         'class' => 'form-group mb-3 col-md-6',
+            //     ],
+            //     'attr' => [
+            //         'placeholder' => 'Ex: 1.462260',
+            //         'data-counter' => 25,
+            //     ],
+            //     'help_block' => [
+            //         'tag' => 'a',
+            //         'text' => trans('plugins/real-estate::property.form.latitude_helper'),
+            //         'attr' => [
+            //             'href' => 'https://www.latlong.net/convert-address-to-lat-long.html',
+            //             'target' => '_blank',
+            //             'rel' => 'nofollow',
+            //         ],
+            //     ],
+            // ])
+            // ->add('longitude', 'text', [
+            //     'label' => trans('plugins/real-estate::property.form.longitude'),
+            //     'wrapper' => [
+            //         'class' => 'form-group mb-3 col-md-6',
+            //     ],
+            //     'attr' => [
+            //         'placeholder' => 'Ex: 103.812530',
+            //         'data-counter' => 25,
+            //     ],
+            //     'help_block' => [
+            //         'tag' => 'a',
+            //         'text' => trans('plugins/real-estate::property.form.longitude_helper'),
+            //         'attr' => [
+            //             'href' => 'https://www.latlong.net/convert-address-to-lat-long.html',
+            //             'target' => '_blank',
+            //             'rel' => 'nofollow',
+            //         ],
+            //     ],
+            // ])
             ->add('rowClose', 'html', [
                 'html' => '</div>',
             ])
@@ -352,22 +352,22 @@ class PropertyForm extends FormAbstract
                 'choices' => get_property_categories_with_children(),
                 'value' => old('categories', $selectedCategories),
             ])
-            ->add('unique_id', 'text', [
-                'label' => trans('plugins/real-estate::property.unique_id'),
-                'attr' => [
-                    'placeholder' => trans('plugins/real-estate::property.unique_id'),
-                ],
-            ])
-            ->when(! empty($projects), function () use ($projects) {
-                $this
-                    ->add('project_id', 'customSelect', [
-                        'label' => trans('plugins/real-estate::property.form.project'),
-                        'attr' => [
-                            'class' => 'select-search-full',
-                        ],
-                        'choices' => [0 => trans('plugins/real-estate::property.select_project')] + $projects,
-                    ]);
-            })
+            // ->add('unique_id', 'text', [
+            //     'label' => trans('plugins/real-estate::property.unique_id'),
+            //     'attr' => [
+            //         'placeholder' => trans('plugins/real-estate::property.unique_id'),
+            //     ],
+            // ])
+            // ->when(! empty($projects), function () use ($projects) {
+            //     $this
+            //         ->add('project_id', 'customSelect', [
+            //             'label' => trans('plugins/real-estate::property.form.project'),
+            //             'attr' => [
+            //                 'class' => 'select-search-full',
+            //             ],
+            //             'choices' => [0 => trans('plugins/real-estate::property.select_project')] + $projects,
+            //         ]);
+            // })
             ->setBreakFieldPoint('status')
             ->add('author_id', 'autocomplete', [
                 'label' => trans('plugins/real-estate::property.account'),
