@@ -36,7 +36,7 @@ return [
         'selling' => 'For Sale',
         'sold' => 'Sold',
         'renting' => 'For Rent',
-        // 'rented' => 'Rented',
+        'rented' => 'Short Let',
         // 'building' => 'Building',
     ],
     'types' => [

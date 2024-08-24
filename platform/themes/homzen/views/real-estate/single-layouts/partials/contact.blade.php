@@ -32,3 +32,32 @@
         !!}
     </div>
 @endif
+<h7>Kindly inspect and/or verify this property and confirm other necessary details before making payment.</h7>
+    <br>
+    &nbsp       
+    <br>
+    @php
+        use libphonenumber\PhoneNumberUtil;
+        use libphonenumber\PhoneNumberFormat;
+
+        $agentPhoneNumber = $account->phone;
+
+        try {
+            $phoneUtil = PhoneNumberUtil::getInstance();
+            $numberProto = $phoneUtil->parse($agentPhoneNumber, 'NG');
+            $formattedPhoneNumber = $phoneUtil->format($numberProto, PhoneNumberFormat::E164);
+        } catch (\libphonenumber\NumberParseException $e) {
+            $formattedPhoneNumber = null;
+        }
+        $propertyTitle = $property->name;
+        $propertyLink = $property->url;
+        $message = urlencode("Hello, I am interested in the property: {$propertyTitle}. {$propertyLink}");
+        $whatsappLink = $formattedPhoneNumber ? "https://wa.me/{$formattedPhoneNumber}?text={$message}" : '#';
+    @endphp
+
+    @if($formattedPhoneNumber)
+        <a href="{{ $whatsappLink }}" target="_blank" class="whatsapp-button">
+        <img src="/storage/general/whatsapp-button-med.png" alt="WhatsApp" style="width: 200px; height: auto;"></a>
+    @else
+        <p>Agency's phone number is not available or invalid.</p>
+    @endif

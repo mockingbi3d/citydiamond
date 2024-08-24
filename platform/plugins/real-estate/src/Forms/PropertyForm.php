@@ -352,12 +352,12 @@ class PropertyForm extends FormAbstract
                 'choices' => get_property_categories_with_children(),
                 'value' => old('categories', $selectedCategories),
             ])
-            // ->add('unique_id', 'text', [
-            //     'label' => trans('plugins/real-estate::property.unique_id'),
-            //     'attr' => [
-            //         'placeholder' => trans('plugins/real-estate::property.unique_id'),
-            //     ],
-            // ])
+            ->add('unique_id', 'text', [
+                'label' => trans('plugins/real-estate::property.unique_id'),
+                'attr' => [
+                    'placeholder' => trans('plugins/real-estate::property.unique_id'),
+                ],
+            ])
             // ->when(! empty($projects), function () use ($projects) {
             //     $this
             //         ->add('project_id', 'customSelect', [

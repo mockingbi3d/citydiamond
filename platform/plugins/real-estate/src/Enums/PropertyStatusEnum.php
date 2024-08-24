@@ -28,7 +28,7 @@ class PropertyStatusEnum extends Enum
 
     public const RENTING = 'renting';
 
-    // public const RENTED = 'rented';
+    public const RENTED = 'rented';
 
     // public const BUILDING = 'building';
 
@@ -51,8 +51,8 @@ class PropertyStatusEnum extends Enum
                 self::SOLD => Html::tag('span', self::SOLD()->label(), ['class' => 'label-danger status-label'])
                     ->toHtml(),
                 self::RENTING => Html::tag('span', self::RENTING()->label(), ['class' => 'label-success status-label'])
-                //     ->toHtml(),
-                // self::RENTED => Html::tag('span', self::RENTED()->label(), ['class' => 'label-danger status-label'])
+                    ->toHtml(),
+                self::RENTED => Html::tag('span', self::RENTED()->label(), ['class' => 'label-danger status-label'])
                 //     ->toHtml(),
                 // self::BUILDING => Html::tag('span', self::BUILDING()->label(), ['class' => 'label-info status-label'])
                     ->toHtml(),

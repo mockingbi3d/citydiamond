@@ -18,7 +18,7 @@
                 <div class="swiper-wrapper">
                     @foreach($locations as $location)
                         <div class="swiper-slide">
-                            <a href="#" class="box-location style-1">
+                            <a href="{{ $location->url }}" class="box-location style-1">
                                 <div class="image">
                                     {{ RvMedia::image($location->image, $location->name, 'medium-rectangle-column') }}
                                 </div>

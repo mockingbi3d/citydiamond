@@ -38,7 +38,7 @@ class WidgetSeeder extends BaseSeeder
                 'sidebar_id' => 'inner_footer_sidebar',
                 'position' => 1,
                 'data' => [
-                    'about' => 'Specializes in providing high-class tours for those in need. Contact Us',
+                    'about' => 'Invest in Real Estate. Contact us for Interior Decoration',
                     'items' => [
                         [
                             [
@@ -47,7 +47,8 @@ class WidgetSeeder extends BaseSeeder
                             ],
                             [
                                 'key' => 'text',
-                                'value' => '101 E 129th St, East Chicago, IN 46312, US',
+                                'value' => '3 Owode, Langbasa, Ajah Lekki, Lagos 
+                                Adedoyin Street, Poka Epe, Lagos',
                             ],
                         ],
                         [
@@ -57,7 +58,7 @@ class WidgetSeeder extends BaseSeeder
                             ],
                             [
                                 'key' => 'text',
-                                'value' => '1-333-345-6868',
+                                'value' => '08032989564',
                             ],
                         ],
                         [
@@ -67,7 +68,7 @@ class WidgetSeeder extends BaseSeeder
                             ],
                             [
                                 'key' => 'text',
-                                'value' => 'contact@botble.com',
+                                'value' => 'sales@citydiamondhomes.com',
                             ],
                         ],
                     ],
